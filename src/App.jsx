@@ -1,24 +1,23 @@
 import React from "react";
 import items from "./items";
 import Tile from "./tile";
+import "./App.css";
 
 export default function App() {
-const tileElements = items.map(item => (
-<Tile key={[item.id]} item={item} />
-));
+  const [tilings, setTilings] = React.useState(items);
+ 
+  const tileContents = tilings.map((tiling) => (
+    <Tile 
+    key={tiling.id} 
+    word = {tiling.word}
+    englishWord = {tiling.englishWord}
+    isOn={tiling.isOn} 
+    />
+  ));
 
-const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '10px'
-};
-
-return (
-    <main style={gridStyle}>
-        {tileElements}
-    </main>
-);
-
-
-
+  return <main>
+    <h1>Learn Mandarin</h1>
+    <p>Instruction: Flip the cards below to see the word in Mandarin</p>
+    {tileContents}
+    </main>;
 }
