@@ -1,12 +1,12 @@
 import React from "react";
 
 export default function Tile(props) {
-  const [showEmoji, setShowEmoji] = React.useState(props.isOn);
+  const [showEnglishWord, setShowEnglishWord] = React.useState(props.isOn);
 
-  const status = showEmoji ? props.emoji : props.word;
+  const status = showEnglishWord ? props.englishWord : props.word;
 
   function toggleContent() {
-    setShowEmoji((showEmoji) => !showEmoji);
+    setShowEnglishWord((showEnglishWord) => !showEnglishWord);
   }
 
   return (

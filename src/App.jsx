@@ -10,12 +10,14 @@ export default function App() {
     <Tile 
     key={tiling.id} 
     word = {tiling.word}
-    emoji = {tiling.emoji}
+    englishWord = {tiling.englishWord}
     isOn={tiling.isOn} 
     />
   ));
 
   return <main>
+    <h1>Learn Mandarin</h1>
+    <p>Instruction: Flip the cards below to see the word in Mandarin</p>
     {tileContents}
     </main>;
 }

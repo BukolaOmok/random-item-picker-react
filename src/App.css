@@ -9,15 +9,19 @@
   box-sizing: border-box;
 }
 
+h1 {
+  color: rgb(143, 193, 240);
+}
+
 
 .box-style {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   display: inline-block;
   justify-content: center;
   font-size: 24px;
   margin: 0.3rem;
-  border: 0.5rem solid black;
+  border: 0.2rem solid rgb(143, 193, 240);
   border-radius: 1rem;
   align-content: center;
   align-items: center;
