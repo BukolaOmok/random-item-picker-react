@@ -10,7 +10,7 @@
 }
 
 h1 {
-  color: rgb(143, 193, 240);
+  color: white;
 }
 
 
@@ -29,7 +29,9 @@ h1 {
 }
 
 .content-style {
-  text-align: center;
+  background-color: rgb(143, 193, 240);
+  padding: 2rem;
+  border-radius: 2rem;
   color: black;
   
 }
