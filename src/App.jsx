@@ -1,23 +1,31 @@
 import React from "react";
-import items from "./items";
-import Tile from "./tile";
 import "./App.css";
 
 export default function App() {
-  const [tilings, setTilings] = React.useState(items);
- 
-  const tileContents = tilings.map((tiling) => (
-    <Tile 
-    key={tiling.id} 
-    word = {tiling.word}
-    englishWord = {tiling.englishWord}
-    isOn={tiling.isOn} 
-    />
-  ));
 
-  return <main>
-    <h1>Learn Mandarin</h1>
-    <p>Instruction: Flip the cards below to see the word in Mandarin</p>
-    {tileContents}
-    </main>;
+  return (
+    <div>
+      <div>
+      <h1>
+        Bukola Simple To-do List App
+      </h1>
+      </div>
+
+      <div>
+      <input
+            type="text"
+            placeholder="Add a new task..."
+          />
+          <button onClick="">Add</button>
+    </div>
+
+    <div>
+      <h2>Current Tasks</h2>
+    </div>
+
+    <div>
+      <h2>Completed Tasks</h2>
+    </div>
+        </div>
+  );
 }
