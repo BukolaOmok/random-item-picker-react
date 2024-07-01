@@ -33,6 +33,15 @@ h1 {
   padding: 2rem;
   border-radius: 2rem;
   color: black;
+  margin: 5rem
+  
+}
+
+.stored-qr-style {
+  background-color: rgb(143, 193, 240);
+  padding: 2rem;
+  border-radius: 2rem;
+  color: black;
   
 }
 
