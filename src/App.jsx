@@ -1,40 +1,40 @@
 import React from "react";
-import QRCode from "qrcode"
+import QRCode from "qrcode";
 import "./App.css";
 
 export default function App() {
   const [typedString, setTypedString] = React.useState("");
-  const [storedTypedString, setStoredTypedString] = React.useState([])
-  const [storedQRCode, setStoredQRCode] = ([])
+  const [qrCodeUrl, setQrCodeUrl] = React.useState("");
 
-const handleChange = (event) => {
-setTypedString(event.target.value)
-}
+  const handleChange = (event) => {
+    setTypedString(event.target.value);
+  };
 
-const generateQRCode = () => {
-    setStoredTypedString([typedString, ...storedTypedString]);
-    QRCode.toDataURL(typedString, function (err, typedString) {
-      setStoredQRCode([typedString, ...storedQRCode]);
+  const generateQRCode = () => {
+    QRCode.toDataURL(typedString, (err, url) => {
+      setQrCodeUrl(url);
     });
-  }
-
+  };
 
   return (
     <div className="content-style">
       <div>
         <h1>QR Code Generator</h1>
       </div>
-
-      <p>enter a URL and click generate to see code</p>
-
+      <p>Enter a URL and click generate to see the QR code</p>
       <div>
-        <input 
-        type="text" 
-        placeholder="Enter URL..." 
-        onChange={handleChange}
+        <input
+          type="text"
+          placeholder="Enter URL..."
+          value={typedString}
+          onChange={handleChange}
         />
-        <button 
-        onClick={generateQRCode}>Generate</button>
+        <button onClick={generateQRCode}>Generate</button>
+      </div>
+      <div>
+        {qrCodeUrl && (
+          <img src={qrCodeUrl} alt="QR Code" style={{ marginTop: "20px" }} />
+        )}
       </div>
     </div>
   );
