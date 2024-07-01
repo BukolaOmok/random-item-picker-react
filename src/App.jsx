@@ -6,6 +6,7 @@ export default function App() {
   const [typedString, setTypedString] = React.useState("");
   const [qrCodeUrl, setQrCodeUrl] = React.useState("");
   const [storeQRCode, setStoreQRCode] = React.useState([]);
+  // const [storeTypedString,]
 
   const handleChange = (event) => {
     setTypedString(event.target.value);
@@ -49,8 +50,8 @@ export default function App() {
       <div>{qrCodeUrl && <img src={qrCodeUrl} alt="QR Code" />}</div>
     </div>
 
-<div className="stored-qr-style">
-<h1>Recent QR Codes Generated</h1>
+<div className="stored-qr-style"> {storeQRCode.length > 0 && <h1>Recent QR Codes Generated</h1>}
+
 
 <div>
 {storeQRCode.map((qrCode, index) => (
