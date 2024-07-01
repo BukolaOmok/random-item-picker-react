@@ -1,24 +1,40 @@
 import React from "react";
+import QRCode from "qrcode"
 import "./App.css";
 
 export default function App() {
+  const [typedString, setTypedString] = React.useState("");
+  const [storedTypedString, setStoredTypedString] = React.useState([])
+  const [storedQRCode, setStoredQRCode] = ([])
+
+const handleChange = (event) => {
+setTypedString(event.target.value)
+}
+
+const generateQRCode = () => {
+    setStoredTypedString([typedString, ...storedTypedString]);
+    QRCode.toDataURL(typedString, function (err, typedString) {
+      setStoredQRCode([typedString, ...storedQRCode]);
+    });
+  }
+
+
   return (
-    <div className = "content-style">
+    <div className="content-style">
       <div>
-        <h1>Bukola Simple To-do List App</h1>
+        <h1>QR Code Generator</h1>
       </div>
 
-      <div>
-        <input type="text" placeholder="Add a new task..." />
-        <button onClick="">Add</button>
-      </div>
+      <p>enter a URL and click generate to see code</p>
 
       <div>
-        <h2>Current Tasks</h2>
-      </div>
-
-      <div>
-        <h2>Completed Tasks</h2>
+        <input 
+        type="text" 
+        placeholder="Enter URL..." 
+        onChange={handleChange}
+        />
+        <button 
+        onClick={generateQRCode}>Generate</button>
       </div>
     </div>
   );
