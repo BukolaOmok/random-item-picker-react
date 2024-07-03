@@ -17,18 +17,14 @@ body {
   padding: 20px;
 }
 
-/* Form styling */
-form {
-  display: flex;
-  width: 100%;
-  margin-bottom: 15px;
-}
 
 .text-area {
-  flex: 1; /* Make textarea take up most of the space */
-  padding-top: 5rem;
+  width: 100%;
+  max-height: 500px;
+  min-height: 500px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  overflow: hidden;
   font-size: 16px;
   resize: vertical; /* Allow users to resize the textarea vertically */
 }
