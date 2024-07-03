@@ -1,65 +1,48 @@
 import React from "react";
-import QRCode from "qrcode";
 import "./App.css";
 
+const initialText = `
+  Nigeria 
+  United-Kingdom 
+  Dominican-Republic 
+  France 
+  Cambodia 
+  Australia 
+  United-States 
+  Ecuador 
+  India 
+  Italy 
+  Peru 
+  Jordan 
+  Iceland`;
+
 export default function App() {
-  const [typedString, setTypedString] = React.useState("");
-  const [qrCodeUrl, setQrCodeUrl] = React.useState("");
-  const [storeQRCode, setStoreQRCode] = React.useState([]);
-  // const [storeTypedString,]
+  const [textContent, setTextContent] = React.useState(initialText);
+  const [pickedContent, setPickedContent] = React.useState("");
 
   const handleChange = (event) => {
-    setTypedString(event.target.value);
+    setTextContent(event.target.value);
   };
 
-  const generateQRCode = () => {
-    QRCode.toDataURL(typedString, (err, url) => {
-      setQrCodeUrl(url);
-      storeRecentFiveQRCode(url)
-    });
+  const handleRandom = (event) => {
+    event.preventDefault();
+    const textArray = textContent.split("\n")
+    const index = Math.floor(Math.random() * textArray.length);
+    setPickedContent(textArray[index]);
   };
-
-  const storeRecentFiveQRCode = (url) => {
-      setStoreQRCode (storeQRCode => {
-        const newStoreQRCode = [url, ...storeQRCode];
-        return newStoreQRCode.slice(0,5)
-      })
-    }
-
-  
 
   return (
-    <div>
     <div className="content-style">
-      <div>
-        <h1>QR Code Generator</h1>
-      </div>
-
-      <p>Enter a URL and click generate to see the QR code</p>
-
-      <div>
-        <input
-          type="text"
-          placeholder="Enter URL..."
-          value={typedString}
+      <form onSubmit={handleRandom}>
+        <textarea
+          className="text-area"
+          value={textContent}
           onChange={handleChange}
+          name="textData"
         />
-        <button onClick={generateQRCode}>Generate</button>
-      </div>
-
-      <div>{qrCodeUrl && <img src={qrCodeUrl} alt="QR Code" />}</div>
+        <button className="button">Random</button>
+      </form>
+      <h2 className="picked-content">{pickedContent}</h2>
     </div>
-
-<div className="stored-qr-style"> {storeQRCode.length > 0 && <h1>Recent QR Codes Generated</h1>}
-
-
-<div>
-{storeQRCode.map((qrCode, index) => (
-        <div key={index} className="qr-code">
-          <img src={qrCode} alt={`QR Code ${index + 1}`} />
-        </div>
-      ))}
-</div>
-</div>
-</div>
-)}
+  );
+}
