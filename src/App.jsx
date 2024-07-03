@@ -14,7 +14,7 @@ const initialText = `
   Italy 
   Peru 
   Jordan 
-  Iceland`;
+  Iceland`
 
 export default function App() {
   const [textContent, setTextContent] = React.useState(initialText);
