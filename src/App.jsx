@@ -33,6 +33,7 @@ export default function App() {
 
   return (
     <div className="content-style">
+      <h1>Your Next Vacation is One Random Click Away</h1>
       <form onSubmit={handleRandom}>
         <textarea
           className="text-area"
